@@ -1,0 +1,46 @@
+
+Descriere generală:
+Proiectul constă într-un calculator aritmetic dezvoltat în limbajul Perl. Programul poate rezolva operații matematice de bază, având integrate mecanisme de protecție împotriva datelor introduse greșit.
+
+
+Funcționalitățile principale:
+- Operații de bază: adunări, scăderi, înmulțiri și împărțiri.
+- Flexibilitate în comenzi (case-insensitive): Nu ține cont de litere mari sau mici la scrierea comenzilor (de exemplu: add, Add, ADDITION și + sunt recunoscute ca fiind aceeași operație).
+- Validarea datelor: Programul verifică ce introduce utilizatorul; dacă se tastează litere, simboluri sau cuvinte în loc de cifre, programul nu dă eroare, ci afișează un avertisment și cere din nou introducerea unei valori valide.
+- Protecție la împărțirea la 0: Încercările de împărțire la zero sunt blocate și este afișat un mesaj de eroare.
+- Istoric de sesiune: Toate calculele sunt salvate și afișate la ieșirea din program. Istoricul include atât calculele reușite, cât și pe cele invalide (cum ar fi împărțirea la zero).
+
+
+Ghid de utilizare:
+Aplicația ghidează utilizatorul pas cu pas pe tot parcursul execuției prin afișarea instrucțiunilor de utilizare. 
+
+1. Pornirea aplicației:
+La rularea scriptului, apare întrebarea: "Do you want to begin?". Pentru a începe, utilizatorul trebuie să răspundă afirmativ. Dacă raspunsul este unul negativ, programul se încheie afișând un mesaj de sfârșit împreună cu istoricul calculelor efectuate. Dacă utilizatorul introduce altceva, programul va cere un răspuns valid până când condiția este respectată.
+
+2. Alegerea operației:
+Dacă utilizatorul a trimis un răspuns afirmativ, programul afișează lista de operații disponibile. Utilizatorul poate tasta fie simbolul matematic, fie numele operației alese sau o prescurtare a acestuia:
+Adunare: +, addition, add
+Scădere: -, subtraction, sub
+Împărțire: /, division, div
+Înmulțire: *, multiplication, mul
+
+3. Introducerea operanzilor:
+Programul cere pe rând cele două numere pentru calcul. Se pot introduce numere întregi pozitive, numere negative sau numere cu zecimale.
+
+4. Afișarea rezultatului și continuarea:
+După introducerea numerelor, ecuația și rezultatul calcului matematic apar pe ecran. Programul continua prin adresarea intrebarii: "Do you want to continue?".
+- Dacă răspunsul este afirmativ (yes/y), fluxul se reia de la alegerea unei noi operații.
+- Dacă răspunsul este negativ (no/n), programul se oprește și afișează pe ecran istoricul complet al calculelor făcute în acea sesiune.
+
+
+Limitări:
+- Utilizatorul poate efectua doar calcule simple, cu maxim doi operanzi.
+- Programul acoperă strict cele 4 operații fundamentale (adunare, scădere, înmulțire, împărțire).
+- Istoricul calculelor se păstrează doar pe durata sesiunii curente de lucru.
+
+
+Decizii tehnice:
+- Am scris o funcție separată, cleanse, pe care o apelez de fiecare dată când citesc ceva de la tastatură. Aceasta taie automat enter-ul de la final (prin chomp) și elimină spațiile puse din greșeală de utilizator la începutul sau la sfârșitul cuvântului.
+- Au fost analizate și tratate erorile de tipul bad user input ce pot apărea, tastarea unei litere în loc de cifră la scrierea operanzilor și introducerea răspunsurilor invalide. De asemenea, pentru a face calculatorul mai ușor de folosit, programul acceptă răspunsurile scrise atât cu litere mari, cât și cu litere mici.
+- Pentru a evita un șir lung și repetitiv de instrucțiuni if/else, am folosit un dicționar de tip Hash. Astfel, indiferent dacă utilizatorul tastează simbolul matematic, numele complet sau prescurtarea (de exemplu: +, add sau addition), toate aceste variante sunt legate automat de același semn, iar programul știe ce operație să execute.
+- La începutul scriptului am integrat comenzile use strict;, use warnings; și use diagnostics;. Acestea m-au ajutat în faza de dezvoltare să scriu un cod curat, obligându-mă să declar corect fiecare variabilă și prevenind erorile ascunse.
